@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     int age = 22;
     float gpa = 3.8;
     double pi = 3.14159;
@@ -18,11 +19,11 @@ int main() {
     int num2 = 10;
     int num3 = 100;
 
-    printf("%4d\n", num);   // Right-aligned with width 4
-    printf("%4d\n", num2);  // Right-aligned with width 4
-    printf("%4d\n", num3);  // Right-aligned with width 4
+    printf("%4d\n", num);  // Right-aligned with width 4
+    printf("%4d\n", num2); // Right-aligned with width 4
+    printf("%4d\n", num3); // Right-aligned with width 4
 
-    printf("Width example: |%10s|\n", name); // Right-aligned with width 10
+    printf("Width example: |%10s|\n", name);  // Right-aligned with width 10
     printf("Width example: |%-10s|\n", name); // Left-aligned with width 10
 
     // Precision

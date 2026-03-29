@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-int main() {
+int main()
+{
     int age = 0;
     float gpa = 0.0f;
     char grade = '\0';
@@ -19,7 +20,7 @@ int main() {
     getchar(); // Consume the newline character left in the buffer
     printf("Enter your name: ");
     fgets(name, sizeof(name), stdin); // Read a string with spaces
-    name[strlen(name) - 1] = '\0'; // Remove the newline character added by fgets
+    name[strlen(name) - 1] = '\0';    // Remove the newline character added by fgets
 
     printf("%d\n", age);
     printf("%f\n", gpa);
