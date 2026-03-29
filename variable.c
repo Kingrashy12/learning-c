@@ -4,12 +4,12 @@
 
 //This code demonstrates the use of various variable types in C, including integers, floating-point numbers, characters, and boolean values. It also shows how to print these variables using the printf function. The program outputs information about a person's age, GPA, the value of pi, temperature, name, student ID, grade, and enrollment status.
  
-// int - used to store whole numbers (e.g., age, student ID)
-// float - used to store decimal numbers with single precision (e.g., GPA, temperature)
-// double - used to store decimal numbers with double precision (e.g., pi)
-// char - used to store single characters (e.g., grade)
-// char[] - used to store strings (e.g., name)
-// bool - used to store boolean values (true or false) (e.g., is_enrolled)
+// int - used to store whole numbers
+// float - used to store decimal numbers with single precision
+// double - used to store decimal numbers with double precision
+// char - used to store single characters
+// char[] - used to store strings
+// bool - used to store boolean values (true or false)
 
 
 int main() {
