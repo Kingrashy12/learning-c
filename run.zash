@@ -13,6 +13,7 @@ exec gcc $sourceFile $utilsPath -o $outPutName;
 
 if $EXIT_CODE != 0 
   echo "$COLOR_RED❌ Compilation failed with exit code $EXIT_CODE $COLOR_RESET"
+  exit 1
 end 
 
 echo "$COLOR_GREEN✅ Compilation successful! Executable created: $outPutName $COLOR_RESET"
