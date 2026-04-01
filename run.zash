@@ -1,0 +1,26 @@
+if !check_var("1") or !check_var("2") or !check_var("3")
+  echo "$COLOR_RED❌ Usage: zash exec run.zash <source_file.c> <utils_file.c> <output_executable_name> $COLOR_RESET"
+  exit 1
+end
+
+set sourceFile = $1
+set utilsPath = $2
+set outPutName = $3
+
+echo "$COLOR_CYAN⛏️  Compiling $sourceFile with utils from $utilsPath and outputting to $outPutName ... $COLOR_RESET"
+
+exec gcc $sourceFile $utilsPath -o $outPutName;
+
+if $EXIT_CODE != 0 
+  echo "$COLOR_RED❌ Compilation failed with exit code $EXIT_CODE $COLOR_RESET"
+end 
+
+echo "$COLOR_GREEN✅ Compilation successful! Executable created: $outPutName $COLOR_RESET"
+
+clear_stdout()
+
+exec $outPutName;
+
+if $EXIT_CODE != 0 
+  echo "$COLOR_RED❌ Execution failed with exit code $EXIT_CODE $COLOR_RESET"
+end
