@@ -1,5 +1,6 @@
+# Check if all required arguments are present
 if !check_var("1") or !check_var("2") or !check_var("3")
-  echo "$COLOR_RED❌ Usage: zash exec run.zash <source_file.c> <utils_file.c> <output_executable_name> $COLOR_RESET"
+  echo "$COLOR_RED❌ Usage: zash exec run.zash <source_file.c> <utils_file.c> <output_executable_name>$COLOR_RESET"
   exit 1
 end
 
@@ -7,21 +8,39 @@ set sourceFile = $1
 set utilsPath = $2
 set outPutName = $3
 
-echo "$COLOR_CYAN⛏️  Compiling $sourceFile with utils from $utilsPath and outputting to $outPutName ... $COLOR_RESET"
+# Check if source file exists
+if !exists($sourceFile)
+  echo "$COLOR_RED❌ Source file not found: $sourceFile$COLOR_RESET"
+  exit 1
+end
 
+# Check if utils file exists
+if !exists($utilsPath)
+  echo "$COLOR_RED❌ Utils file not found: $utilsPath$COLOR_RESET"
+  exit 1
+end
+
+echo "$COLOR_CYAN⛏️  Compiling $sourceFile with utils from $utilsPath...$COLOR_RESET"
+
+# Compile with error output captured
 exec gcc $sourceFile $utilsPath -o $outPutName;
 
 if $EXIT_CODE != 0 
-  echo "$COLOR_RED❌ Compilation failed with exit code $EXIT_CODE $COLOR_RESET"
+  echo "$COLOR_RED❌ Compilation failed with exit code $EXIT_CODE$COLOR_RESET"
   exit 1
 end 
 
-echo "$COLOR_GREEN✅ Compilation successful! Executable created: $outPutName $COLOR_RESET"
+echo "$COLOR_GREEN✅ Compilation successful! Executable: $outPutName$COLOR_RESET"
 
+# Clear screen before running the executable
 clear_stdout()
 
+echo "$COLOR_CYAN🚀 Running $outPutName...$COLOR_RESET"
 exec $outPutName;
 
 if $EXIT_CODE != 0 
-  echo "$COLOR_RED❌ Execution failed with exit code $EXIT_CODE $COLOR_RESET"
+  echo "$COLOR_RED❌ Execution failed with exit code $EXIT_CODE$COLOR_RESET"
+  exit 1
+else
+  echo "$COLOR_GREEN✅ Execution completed successfully!$COLOR_RESET"
 end
